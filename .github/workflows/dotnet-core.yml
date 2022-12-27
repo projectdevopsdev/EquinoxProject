@@ -23,14 +23,6 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.1
-       
-    - run: mkdir -p path/to/artifact
-
-    - run: echo hello > path/to/artifact/world.txt
-
-    - uses: actions/upload-artifact@v3
-      with:
-       name: my-artifact
-       path: path/to/artifact/world.txt
+    - name: Publish
+      run: dotnet publish SimpleFeedReader/SimpleFeedReader.csproj -c Release -o website
+    
